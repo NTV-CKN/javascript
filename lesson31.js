@@ -19,21 +19,18 @@ function getPromise(id) {
     return new Promise(callbackAsync)
 }
 
-getPromise(-1)
-    .then(data => console.log(data))
-    .catch(reject => console.log(reject))
-
-
 getPromise(1)
-    .then(data => console.log(data))
-    .catch(reject => console.log(reject))
-
-getPromise(10)
     .then(data => {
-        console.log(data) 
-        return data // case not return then undefined
-    })//new Promise with value is data
-    .then(data => console.log(data))
+        console.log("id", 1, data)
+        //return "HIHI"
+        return getPromise(2)
+    })
+    .then(data => {
+        console.log("id", 2, data);
+        //return getPromise("Ss")
+        return getPromise(3)
+    })
+    .then(data => console.log("id", 3, data))
     .catch(reject => console.log(reject))
 
 
